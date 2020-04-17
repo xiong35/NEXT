@@ -1,1 +1,2 @@
-<font color =#FFA500>ljy也来啦!</font>
+<font color =#FFA5ff>ljy还没来!</font>
+QwQ
