@@ -1,3 +1,6 @@
 *.pdf
 *5-3*
 tempCodeRunnerFile.kt
+.vscode/*
+*.jar
+*.class
