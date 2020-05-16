@@ -3,6 +3,7 @@ import java.io.File
 fun main() {
     textIO()
     byteIO()
+    traverseFileTree("C:\\Users\\xiong35\\Desktop\\workingspace\\大创")
 }
 
 fun byteIO(){
@@ -30,4 +31,27 @@ fun textIO() {
         }
     }
     File(wPath).writeText(str)    
+}
+
+
+fun traverseFileTree(filename: String) {
+    val prefixLen = filename.split('\\').size
+    println(prefixLen)
+    val f = File(filename)
+    val fileTreeWalk = f.walk()
+    fileTreeWalk.iterator().forEach {
+        if (it.path.contains(Regex("""\.git\b"""))) {
+            return@forEach
+        }
+        val pathList = it.path.split("\\")
+        if (pathList.size == prefixLen){
+            return@forEach
+        }
+        val relativePath = pathList.slice(prefixLen until  pathList.size)
+        for (i in 1..relativePath.size) {
+            print("-")
+        }
+        print(" ")
+        println(relativePath.last())
+    }
 }
