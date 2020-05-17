@@ -21,16 +21,16 @@ fun main() {
         println(it.value)
     }
 
-    /*以"www."开头且以".com"或者".cn"结尾*/println("以\"www.\"开头且以\".com\"或者\".cn\"结尾")
+    /*以"www."开头且以".com"或者".cn"结尾*/println("以\"www.\"开头且以\".com\"或者\".cn\"结尾：")
     val regex2 = Regex("\\bw{3}\\..*?\\.(com|cn)")
     regex2.findAll(testString).forEach {
         println(it.value.replace(Regex("^w{3}\\."),"")   //除去www.
             .replace(Regex("\\.(com|cn)$"),""))         //除去.com .cn
     }
 
-    /*包含aba式*/println("包含aba式")
-    val regex3Full = Regex("\\b\\w*?(\\w+)(\\w+)\\1\\w*?\\b")
-    val regex3Part = Regex("(\\w+)(\\w+)\\1")
+    /*包含aba式*/println("包含aba式：")
+    val regex3Full = Regex("\\b\\w*?(\\w)(?!\\1\\1)\\w\\1\\w*?\\b") //获取整个单词并除去aaa式
+    val regex3Part = Regex("(\\w)\\w\\1")
     regex3Full.findAll(testString).forEach {
         print(it.value)     //打印完整单词
         print("\t\t重复字符为：")
